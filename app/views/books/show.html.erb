@@ -1,0 +1,33 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <%= render 'list', book: @book_new, user:@user %>
+  <div class="col-md-8 offset-md-1">
+    <h1>Book detail</h1>
+<table class="table tanle-hover table-inverse">
+ <thead>
+    <tr>
+    </tr>
+  </thead>
+ <tbody>
+  <tr>
+    <td><%= link_to user_path(@book.user.id) do %>
+        <%= image_tag @book.user.get_profile_image(100,100) %></br>
+        <%= @book.user.name %>
+        <% end %></td>
+    <td><%= link_to book_path(@book.id) do %>
+      <%= @book.title %>
+      <% end %></td>
+    <td><%= @book.body %></td>
+    <td><% if @user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book),class:"btn btn-success btn-sm" %>
+    <% end %></td>
+    <td><% if @user == current_user %>
+    <%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger btn-sm" %>
+    <% end %></td>
+  </tr>
+ </tbody>
+ </table>
+</div>
+</div>
+</div>
